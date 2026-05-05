@@ -6,8 +6,17 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 
 / {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -60,6 +69,14 @@
             bindings = <&kp ENTER>;
             key-positions = <38 39>;
         };
+
+        // Three-key combo on the adjust layer to wipe all BT profiles.
+        // Scoped to layer 3 so S+D+F on the default layer can't trigger it.
+        BluetoothClearAll {
+            bindings = <&bt BT_CLR_ALL>;
+            key-positions = <14 15 16>;
+            layers = <3>;
+        };
     };
 
     keymap {
@@ -74,24 +91,24 @@
 
             bindings = <
 &kp TAB         &kp Q  &kp W  &kp E     &kp R         &kp T        &kp Y      &kp U  &kp I          &kp O                  &kp P          &kp BSPC
-&kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F         &kp G        &kp H      &kp J  &kp K          &kp L                  &kp SEMI       &kp ENTER
+&kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F         &kp G        &kp H      &kp J  &kp K          &kp L                  &mt RALT SEMI  &kp ENTER
 &kp LCTRL       &kp Z  &kp X  &kp C     &kp V         &kp B        &kp N      &kp M  &mt COMMA DOT  &mt SQT DOUBLE_QUOTES  &mt STAR FSLH  &kp ESC
                               &kp LGUI  &kp LEFT_ALT  &kp SPACE    &kp SPACE  &mo 2  &mo 1
             >;
         };
 
-        lower_layer {
+        lower_layer{
             // -----------------------------------------------------------------------------------------
-            // | SYSR |     |     |     |     |     |   |     |  1  |  2  |  3  |  0  |      |
-            // |      |     |     | UP  |     |     |   |     |  4  |  5  |  6  |     |      |
-            // |      |     | LFT | DWN | RGT |     |   |     |  7  |  8  |  9  |     |      |
-            //                    |     |     | SPC |   | SPC |     |     |
+            // |       |     |     |     |     |     |   |     |  1  |  2  |  3  |  0  | STUDIO UNL |
+            // | SYSR  |     |     | UP  |     |     |   |     |  4  |  5  |  6  |     | SYSR       |
+            // | BOOTL |     | LFT | DWN | RGT |     |   |     |  7  |  8  |  9  |     | BOOTL      |
+            //                     |     |     | SPC |   | SPC |     |     |
 
             bindings = <
-&sys_reset  &trans  &trans    &trans    &trans     &trans       &trans   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0  &trans
-&trans      &trans  &trans    &kp UP    &trans     &trans       &trans   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
-&trans      &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans       &trans   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
-                              &trans    &trans     &kp SPACE    &kp SPACE  &trans        &trans
+&trans &trans  &trans    &trans    &trans     &trans       &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0  &trans
+&trans &trans  &trans    &kp UP    &trans     &trans       &trans     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
+&trans &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans       &trans     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
+                         &trans    &trans     &kp SPACE    &kp SPACE  &trans        &trans
             >;
         };
 
@@ -105,10 +122,31 @@
             bindings = <
 &kp TAB    &kp EXCL     &kp AT              &kp HASH            &kp AMPERSAND  &kp PRCNT           &kp CARET  &kp DOLLAR  &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
 &kp LCTRL  &kp C_MUTE   &kp C_VOLUME_DOWN   &kp C_VOLUME_UP     &kp LESS_THAN  &kp GREATER_THAN    &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans       &trans              &trans              &trans         &trans              &kp UNDER  &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                            &kp LGUI            &trans         &kp SPACE           &kp SPACE    &trans      &kp RALT
+&kp LSHFT  &trans       &trans              &kp RA(COMMA)       &trans         &trans              &kp UNDER  &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                                            &kp LGUI            &trans         &kp SPACE           &kp SPACE  &trans      &kp RALT
             >;
         };
+
+        adjust_layer {
+            // -----------------------------------------------------------------------------------------
+            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
+            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
+            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    |     |     |     |   |     |     |     |
+
+            bindings = <
+&studio_unlock &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3    &trans  &trans  &trans  &trans  &trans  &studio_unlock
+&sys_reset     &trans &bt BT_CLR   &bt BT_PRV   &bt BT_NXT   &trans          &trans  &trans  &trans  &trans  &trans  &sys_reset
+&bootloader    &trans &trans       &trans       &trans       &trans          &trans  &trans  &trans  &trans  &trans  &bootloader
+                                   &trans       &trans       &trans          &trans  &trans  &trans
+            >;
+        };
+
+        // Empty slots reserved for ZMK Studio: Studio cannot add layers at runtime,
+        // so we pre-declare these so they show up as "available" layers to enable and edit.
+        extra1 { status = "reserved"; };
+        extra2 { status = "reserved"; };
+        extra3 { status = "reserved"; };
     };
 };
 

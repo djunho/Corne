@@ -68,16 +68,16 @@ The matrix configuration uses GPIO pins on the nRF52840 Pro Micro clone. Below a
 - **Columns**: Columns are always numbered from left to right (as viewed from the back of the plate (where the wiring is done)).
 
 ⚠️ **Note**: If you accidentally solder the rows or columns to the wrong pins, you do not need to desolder. The mappings can be fixed in the firmware configuration files:
-- `corne.dtsi`: Defines rows for both halves.
-- `corne_left.overlay`: Defines columns for the left half.
-- `corne_right.overlay`: Defines columns for the right half.
+- `corne_left.overlay`: Defines rows and columns for the left half.
+- `corne_right.overlay`: Defines rows and columns for the right half.
+- `corne.dtsi`: Shared kscan settings (diode direction, etc.).
 
 #### Left Half Pin Assignments
 - **Rows (Connected to `row-gpios`)**:
-  - Row 0: Pin 21
-  - Row 1: Pin 20
-  - Row 2: Pin 19
-  - Row 3: Pin 18
+  - Row 0: Pin 20
+  - Row 1: Pin 19
+  - Row 2: Pin 18
+  - Row 3: Pin 15
 - **Columns (Connected to `col-gpios`)**:
   - Column 0: Pin 2
   - Column 1: Pin 7
