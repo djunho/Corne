@@ -99,16 +99,16 @@
 
         lower_layer{
             // -----------------------------------------------------------------------------------------
-            // |       |     |     |     |     |     |   |     |  1  |  2  |  3  |  0  | STUDIO UNL |
-            // | SYSR  |     |     | UP  |     |     |   |     |  4  |  5  |  6  |     | SYSR       |
-            // | BOOTL |     | LFT | DWN | RGT |     |   |     |  7  |  8  |  9  |     | BOOTL      |
-            //                     |     |     | SPC |   | SPC |     |     |
+            // |      |     |     |     |     |     |   |     |  1  |  2  |  3  |  0  | DEL |
+            // |      |     | PUP | UP  | PDN |     |   |     |  4  |  5  |  6  |     |     |
+            // |      | HOME| LFT | DWN | RGT | END |   |     |  7  |  8  |  9  |     |     |
+            //                    |     |     | SPC |   | SPC |     |     |
 
             bindings = <
-&trans &trans  &trans    &trans    &trans     &trans       &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0  &trans
-&trans &trans  &trans    &kp UP    &trans     &trans       &trans     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
-&trans &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans       &trans     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
-                         &trans    &trans     &kp SPACE    &kp SPACE  &trans        &trans
+&trans &trans     &trans     &trans    &trans     &trans       &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0  &kp DEL
+&trans &trans     &kp PG_UP  &kp UP    &kp PG_DN  &trans       &trans     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
+&trans &kp HOME   &kp LEFT   &kp DOWN  &kp RIGHT  &kp END       &trans     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
+                            &trans    &trans     &kp SPACE    &kp SPACE  &trans        &trans
             >;
         };
 
