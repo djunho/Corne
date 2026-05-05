@@ -71,17 +71,17 @@ For a clean rebuild, add `-p always` or delete the build dir.
 
 ## ZMK Studio
 
-Studio is enabled by default on the left half (`CONFIG_ZMK_STUDIO=y` is set in `corne_left.conf`; the snippet is wired into CI via `build.yaml`). For local builds, the snippet still has to be passed on the command line:
+Studio is enabled by default on the right half (`CONFIG_ZMK_STUDIO=y` is set in `corne_right.conf`; the snippet is wired into CI via `build.yaml`). The right half is the BLE/USB central in this config — it's the side that connects to the host. For local builds, the snippet still has to be passed on the command line:
 
 ```fish
-west build -p -s zmk/app -d build/left -b nice_nano/nrf52840/zmk \
+west build -p -s zmk/app -d build/right -b nice_nano/nrf52840/zmk \
   -S studio-rpc-usb-uart \
-  -- -DSHIELD=corne_left \
+  -- -DSHIELD=corne_right \
      -DZMK_CONFIG=/home/djunho/personal/Corne/config
 ```
 
-The right half and settings-reset builds are unchanged — Studio only runs on the central (left).
+The left half and settings-reset builds are unchanged — Studio only runs on the central (right).
 
-**Using it:** flash the left half, open https://zmk.studio, plug in over USB, and press `lower + top-right key` to unlock — that combo is bound to `&studio_unlock` on the lower layer.
+**Using it:** flash the right half, open https://zmk.studio, plug the USB cable into the **right** half, and press `lower + top-right key` to unlock — that combo is bound to `&studio_unlock` on the lower layer.
 
 **If the build fails** with a linker "region overflow" error, flash is tight; disable unused features in `corne.conf` (RGB, display, etc. are already off).
