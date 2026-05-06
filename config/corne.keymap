@@ -8,6 +8,9 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+// AltGr+6 produces dead_circumflex on us(altgr-intl)
+#define DEAD_CARET RA(N6)
+
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -119,8 +122,8 @@
             bindings = <
 &trans &trans     &trans     &trans    &trans     &trans       &trans     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0  &kp DEL
 &trans &trans     &kp PG_UP  &kp UP    &kp PG_DN  &trans       &trans     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
-&trans &kp HOME   &kp LEFT   &kp DOWN  &kp RIGHT  &kp END       &trans     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
-                            &trans    &trans     &kp SPACE    &kp SPACE  &trans        &trans
+&trans &kp HOME   &kp LEFT   &kp DOWN  &kp RIGHT  &kp END      &trans     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans  &trans
+                             &trans    &trans     &kp SPACE    &kp SPACE  &trans        &trans
             >;
         };
 
@@ -132,10 +135,10 @@
             //                    | GUI |     | SPC |   | SPC |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL     &kp AT              &kp HASH            &kp AMPERSAND  &kp PRCNT           &kp CARET  &kp DOLLAR  &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &kp C_MUTE   &kp C_VOLUME_DOWN   &kp C_VOLUME_UP     &kp LESS_THAN  &kp GREATER_THAN    &kp MINUS  &kp EQUAL   &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans       &trans              &kp RA(COMMA)       &trans         &trans              &kp UNDER  &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &mt TILDE RA(TILDE)
-                                            &kp LGUI            &trans         &kp SPACE           &kp SPACE  &trans      &kp RALT
+&kp TAB    &kp EXCL     &kp AT              &kp HASH            &kp AMPERSAND  &kp PRCNT           &mt CARET DEAD_CARET  &kp DOLLAR  &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&kp LCTRL  &kp C_MUTE   &kp C_VOLUME_DOWN   &kp C_VOLUME_UP     &kp LESS_THAN  &kp GREATER_THAN    &kp MINUS             &kp EQUAL   &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &trans       &trans              &kp RA(COMMA)       &trans         &trans              &kp UNDER             &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &mt TILDE RA(TILDE)
+                                            &kp LGUI            &trans         &kp SPACE           &kp SPACE             &trans      &kp RALT
             >;
         };
 
