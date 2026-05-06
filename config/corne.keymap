@@ -83,6 +83,12 @@
             key-positions = <13 17>;
             layers = <0>;
         };
+
+        PlayPause {
+            bindings = <&kp C_PLAY_PAUSE>;
+            key-positions = <13 14>;
+            layers = <2>;
+        };
     };
 
     keymap {
