@@ -10,6 +10,8 @@
 
 // AltGr+6 produces dead_circumflex on us(altgr-intl)
 #define DEAD_CARET RA(N6)
+// AltGr+5 produces euro sign on us(altgr-intl)
+#define EURO RA(N5)
 
 / {
     conditional_layers {
@@ -135,10 +137,10 @@
             //                    | GUI |     | SPC |   | SPC |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL     &kp AT              &kp HASH            &kp AMPERSAND  &kp PRCNT           &mt CARET DEAD_CARET  &kp DOLLAR  &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &kp C_MUTE   &kp C_VOLUME_DOWN   &kp C_VOLUME_UP     &kp LESS_THAN  &kp GREATER_THAN    &kp MINUS             &kp EQUAL   &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans       &trans              &kp RA(COMMA)       &trans         &trans              &kp UNDER             &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &mt TILDE RA(TILDE)
-                                            &kp LGUI            &trans         &kp SPACE           &kp SPACE             &trans      &kp RALT
+&kp TAB    &kp EXCL     &kp AT              &kp HASH            &mt EURO AMPERSAND  &kp PRCNT           &mt CARET DEAD_CARET  &kp DOLLAR  &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&kp LCTRL  &kp C_MUTE   &kp C_VOLUME_DOWN   &kp C_VOLUME_UP     &kp LESS_THAN       &kp GREATER_THAN    &kp MINUS             &kp EQUAL   &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &trans       &trans              &kp RA(COMMA)       &trans              &trans              &kp UNDER             &kp PLUS    &kp LBRC   &kp RBRC  &kp PIPE  &mt TILDE RA(TILDE)
+                                            &kp LGUI            &trans              &kp SPACE           &kp SPACE             &trans      &kp RALT
             >;
         };
 
