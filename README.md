@@ -12,17 +12,17 @@ A DIY wireless split keyboard based on the Corne layout, built for approximately
 
 ## Bill of Materials
 
-| Component | Quantity | Cost (USD) | Link |
+| Component | Quantity | Cost (Euros) | Link |
 |-----------|----------|------------|------|
-| Controller boards (ProMicro nrf52840) | 2 | 6.82 | [AliExpress](https://a.aliexpress.com/_EIV3vwY) |
-| Batteries | 2 | 4.20 | [AliExpress](https://a.aliexpress.com/_Eynt9TK) |
+| Controller boards (ProMicro nrf52840) | 2 | 7.06 | [AliExpress](https://a.aliexpress.com/_EIV3vwY) |
+| Batteries | 4 | 11.54 | [AliExpress](https://pt.aliexpress.com/item/1005008790722153.html) |
 | Mechanical Switches | 50 | 7.47 | [AliExpress](https://a.aliexpress.com/_EGhMxEC) |
-| Keycaps | Set | 3.79 | [Option 1](https://a.aliexpress.com/_EzQyNtA) / [Option 2](https://a.aliexpress.com/_EH8mNqs) |
-| Diodes (1N4148) | 100 | 0.85 | [AliExpress](https://a.aliexpress.com/_EwZoG2G) |
-| Slide Switches | 2 | 0.11 | |
+| Diodes (1N4148) | 100 | 0.86 | [AliExpress](https://a.aliexpress.com/_EwZoG2G) |
+| Slide Switches | 50 | 2.66 | [AliExpress](https://pt.aliexpress.com/item/1005010427557422.html) |
 | 3D Printed Parts | Set | 1.80 | Files provided |
 
-**Total Cost**: $25.04 (excluding wires and screws)
+**Total Cost**: €31.39 (excluding wires and screws)
+**LeftOvers**: 2 batteries, a lot of diodes and slide switch
 
 ## Current Keymap
 
