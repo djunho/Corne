@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
 
 // AltGr+6 produces dead_circumflex on us(altgr-intl)
 #define DEAD_CARET RA(N6)
@@ -173,16 +174,16 @@
 
         adjust_layer {
             // -----------------------------------------------------------------------------------------
-            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
-            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
-            // |      |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    |     |     |     |   |     |     |     |
+            // | UNLOCK |     | BT 0 | BT 1 | BT 2 | BT 3 |   | TOG | EFF | HUI | SAI | BRI | UNLOCK |
+            // | RESET  |     | CLR  | PRV  | NXT  |      |   |     | EFR | HUD | SAD | BRD | RESET  |
+            // | BOOT   |     |      |      |      |      |   | ON  | OFF |     |     |     | BOOT   |
+            //                       |      |      |      |   |     |     |     |
 
             bindings = <
-&studio_unlock &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3    &trans  &trans  &trans  &trans  &trans  &studio_unlock
-&sys_reset     &trans &bt BT_CLR   &bt BT_PRV   &bt BT_NXT   &trans          &trans  &trans  &trans  &trans  &trans  &sys_reset
-&bootloader    &trans &trans       &trans       &trans       &trans          &trans  &trans  &trans  &trans  &trans  &bootloader
-                                   &trans       &trans       &trans          &trans  &trans  &trans
+&studio_unlock &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3    &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &studio_unlock
+&sys_reset     &trans &bt BT_CLR   &bt BT_PRV   &bt BT_NXT   &trans          &trans          &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &sys_reset
+&bootloader    &trans &trans       &trans       &trans       &trans          &rgb_ug RGB_ON  &rgb_ug RGB_OFF &trans          &trans          &trans          &bootloader
+                                   &trans       &trans       &trans          &trans          &trans          &trans
             >;
         };
 
