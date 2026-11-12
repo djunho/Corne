@@ -116,3 +116,21 @@ Studio is enabled by default on the right half (`CONFIG_ZMK_STUDIO=y`). The righ
 1. Connect the **right** half to your computer via USB.
 2. Open https://zmk.studio in a Chromium-based browser.
 3. Press `&studio_unlock` (on Layer 3 / adjust layer, top-left or top-right key) to unlock live editing.
+
+---
+
+## Visual Keymap Diagram (keymap-drawer)
+
+To regenerate the visual SVG diagram for `config/corne.keymap` locally without pushing to GitHub:
+
+```bash
+uvx --from keymap-drawer keymap -c keymap_drawer.config.yaml parse -z config/corne.keymap > img/corne.yaml && \
+uvx --from keymap-drawer keymap -c keymap_drawer.config.yaml draw img/corne.yaml -o img/corne.svg
+```
+
+To preview the generated SVG:
+
+```bash
+xdg-open img/corne.svg
+```
+

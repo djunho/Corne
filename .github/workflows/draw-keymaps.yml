@@ -1,0 +1,20 @@
+name: Draw keymaps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'config/*.keymap'
+      - 'keymap_drawer.config.yaml'
+      - '.github/workflows/draw-keymaps.yml'
+
+jobs:
+  draw:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: write
+    with:
+      keymap_patterns: "config/corne.keymap"
+      config_path: "keymap_drawer.config.yaml"
+      output_folder: "img"
+      commit_message: "docs(keymap): auto-update keymap diagram [skip ci]"

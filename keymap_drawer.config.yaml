@@ -1,0 +1,22 @@
+draw_config:
+  key_w: 60.0
+  key_h: 56.0
+  split_gap: 30.0
+  combo_w: 28.0
+  combo_h: 26.0
+  arc_radius: 6.0
+  svg_extra_style: |
+    /* GitHub dark mode support */
+    @media (prefers-color-scheme: dark) {
+      svg.keymap { fill: #c9d1d9; }
+      rect.key { fill: #21262d; stroke: #30363d; }
+      rect.combo, rect.combo-separate { fill: #1f3a5f; }
+      rect.held, rect.combo.held { fill: #4c1d24; }
+      text.label { fill: #58a6ff; stroke: #0d1117; }
+    }
+
+parse_config:
+  raw_binding_map:
+    '&studio_unlock': STUDIO UNLOCK
+    '&bootloader': BOOTLOADER
+    '&sys_reset': RESET
